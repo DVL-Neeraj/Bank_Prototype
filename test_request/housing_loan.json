@@ -1,0 +1,27 @@
+{
+    "instances": [
+        {
+            "gender": "M",
+            "age": 24,
+            "education_level": "PhD",
+            "region": "Rural",
+            "employer": "Employed",
+            "rm_products_sold": 2,
+            "rm_meetings": 3,
+            "rm_meetings_rescheduled": 0,
+            "rm_complaints": 0,
+            "loan_history": "No Loan History",
+            "event": "None",
+            "net_worth": 300000000,
+            "rm_skillset": "None",
+            "cibil": 600,
+            "terminates_products_early": false,
+            "kyc_status": "Compliant",
+            "marital_status": "Married",
+            "conversion_duration": 0.0,
+            "interest_rate": 0.03,
+            "unfavorable_employer": false,
+            "unfavorable_profession": false
+        }
+    ]
+}
