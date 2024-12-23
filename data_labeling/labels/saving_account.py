@@ -46,7 +46,7 @@ categories = {
     "unfavorable_profession": {True: -0.75, False: 0},
     "unfavorable_employer": {True: -2, False: 0},
     "kyc_status": {"Non-Compliant": -0.75, "Compliant": 0},
-    "marital_status": {"Married": -0.1, "Unmarried": 0.2},
+    "marital_status": {"Married": 0.1, "Unmarried": 0.0},
 }
 
 
@@ -57,7 +57,7 @@ def assign_label_saving_account(base_df):
     df["conversion_duration"] = np.random.randint(0, 50, df.shape[0])
     df["interest_rate"] = np.round(np.random.uniform(0, 0.15, df.shape[0]), 2)
     df["age_group"] = calculate_age_group(df["age"])
-    df["gender"] = df["gender"].map({"Female": "F", "Male": "M"})
+    df["gender"] = df["gender"].apply(lambda x:'M' if x== "Male" else 'F')
     df["probability"] = 0.01
     df["unfavorable_profession"] = pd.cut(
         np.random.random(df.shape[0]), bins=(0, 0.96, 1), labels=(False, True)

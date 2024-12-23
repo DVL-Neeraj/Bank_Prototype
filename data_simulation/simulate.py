@@ -22,7 +22,7 @@ def simulate(number_of_customers=int(1e7), new_base_data=False):
                 customers = []
         write_output_to_csv(temp_file_path, customers)
 
-        if os.path.isfile("file_path"):
+        if os.path.isfile(file_path):
             os.remove(file_path)
         os.rename(temp_file_path, file_path)
     else:

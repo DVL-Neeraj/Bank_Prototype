@@ -12,8 +12,8 @@ from .labels.saving_account import assign_label_saving_account
 # Load the base dataset into a dataframe
 
 
-def label_products(labels=[]):
-    file_path = "data/output/customers.csv"
+def label_products(labels=[],file_path=None):
+    #file_path = "data/output/customers.csv"
 
     if not (os.path.isfile(file_path)):
         print("Base dataset does not exist.")
@@ -31,7 +31,7 @@ def label_products(labels=[]):
                 df_personal_loan.to_csv(f"{file_path[0:-4]}_personal_loan.csv")
             case "education_loan":
                 df_education_loan = assign_label_education_loan(df)
-                df_education_loan.to_csv(f"{file_path[0:-4]}_education_loan.csv")
+                df_education_loan.to_csv(f"{file_path[0:-4]}_loan_dataset.csv")
             case "mutual_fund":
                 df_mutual_fund = assign_label_mutual_fund(df)
                 df_mutual_fund.to_csv(f"{file_path[0:-4]}_mutual_fund.csv")

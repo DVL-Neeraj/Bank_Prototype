@@ -31,7 +31,6 @@ categories = {
     "loan_history": {
         "None": 0,
         "Loans repaid on time": 0.05,
-        "Loan repayment on schedule": 0.04,
         "Loans Not Repaid On Time": -0.4,
     },
     "event": {"None": 0},
@@ -57,7 +56,7 @@ def assign_label_recurring_deposit(base_df):
     df["conversion_duration"] = np.random.randint(0, 7, df.shape[0])
     df["interest_rate"] = np.round(np.random.uniform(0, 0.15, df.shape[0]), 2)
     df["age_group"] = calculate_age_group(df["age"])
-    df["gender"] = df["gender"].map({"Female": "F", "Male": "M"})
+    df["gender"] = df["gender"].apply(lambda x:'M' if x== "Male" else 'F')
     df["probability"] = 0.01
     df["unfavorable_profession"] = pd.cut(
         np.random.random(df.shape[0]), bins=(0, 0.96, 1), labels=(False, True)

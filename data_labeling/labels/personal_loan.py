@@ -31,7 +31,6 @@ categories = {
     "loan_history": {
         "None": 0,
         "Loans repaid on time": 0.05,
-        "Loan repayment on schedule": 0.05,
         "Loans Not Repaid On Time": -0.5,
     },
     "event": {"None": 0},
@@ -45,8 +44,8 @@ categories = {
     "terminates_products_early": {True: -0.75, False: 0},
     "unfavorable_profession": {True: -0.75, False: 0},
     "unfavorable_employer": {True: -2, False: 0},
-    "kyc_status": {"Non-Compliant": -0.75, "Compliant": 0},
-    "marital_status": {"Married": -0.2, "Unmarried": 0.2},
+    "kyc_status": {"Non-Compliant": 0, "Compliant": 0},
+    "marital_status": {"Married": 0.5, "Unmarried": 0.0},
 }
 
 
@@ -57,7 +56,7 @@ def assign_label_personal_loan(base_df):
     df["conversion_duration"] = np.random.randint(0, 14, df.shape[0])
     df["interest_rate"] = np.round(np.random.uniform(0, 0.15, df.shape[0]), 2)
     df["age_group"] = calculate_age_group(df["age"])
-    df["gender"] = df["gender"].map({"Female": "F", "Male": "M"})
+    df["gender"] = df["gender"].apply(lambda x:'M' if x== "Male" else 'F')
     df["probability"] = 0.01
     df["unfavorable_profession"] = pd.cut(
         np.random.random(df.shape[0]), bins=(0, 0.96, 1), labels=(False, True)
